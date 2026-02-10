@@ -289,7 +289,7 @@
         <div class="column is-full">
           <img src="static/images/granularity.png" alt="Token-level vs response-level granularity comparison" loading="lazy" style="width: 100%;"/>
           <p class="has-text-centered" style="margin-top: 1rem;">
-            <strong>Granularity Analysis:</strong> We distinguish between token length μ and feedback length μ', providing the first explicit analysis of these two critical measures in preference optimization for LLMs.
+            <strong>Granularity Families:</strong> We define two granularity families (i.e., how to decompose a response into tokens) in ADPO: Static Family (b-d) and Adaptive Family (e-g). Static Family divides responses using a fixed window size k, while Adaptive Family dynamically determines the window size by decomposing responses into m segments.
           </p>
         </div>
       </div>
@@ -311,7 +311,7 @@
         <div class="column is-full">
           <img src="static/images/results.png" alt="Experimental results showing ADPO performance" loading="lazy" style="width: 100%;"/>
           <p class="has-text-centered" style="margin-top: 1rem;">
-            <strong>Main Results:</strong> ADPO demonstrates consistent improvements across multiple benchmarks, validating our theoretical contributions and showing the practical benefits of autoregressive preference optimization.
+            <strong>Main Results:</strong> ADPO demonstrates consistent improvements across multiple mathematic reasoning benchmarks, validating our theoretical contributions and showing the practical benefits of autoregressive preference optimization. Granularity analysis reveals that finer granularity can lead to better performance.
           </p>
         </div>
       </div>
