@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+
   <!-- Primary Meta Tags -->
   <meta name="title" content="Autoregressive Direct Preference Optimization - Masanari Oi et al.">
-  <meta name="description" content="A novel DPO formulation that explicitly integrates autoregressive modeling into preference optimization, distinguishing token length and feedback length measures.">
-  <meta name="keywords" content="Direct Preference Optimization, Bradley-Terry Model, Large Language Models, RLHF, Preference Learning, Autoregressive Models">
+  <meta name="description"
+    content="A novel DPO formulation that explicitly integrates autoregressive modeling into preference optimization, distinguishing token length and feedback length measures.">
+  <meta name="keywords"
+    content="Direct Preference Optimization, Bradley-Terry Model, Large Language Models, RLHF, Preference Learning, Autoregressive Models">
   <meta name="author" content="Masanari Oi, Mahiro Ukai, Masahiro Kaneko, Naoaki Okazaki, Nakamasa Inoue">
   <meta name="robots" content="index, follow">
   <meta name="language" content="English">
-  
+
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Institute of Science Tokyo">
   <meta property="og:title" content="Autoregressive Direct Preference Optimization">
-  <meta property="og:description" content="A novel DPO formulation that explicitly integrates autoregressive modeling into preference optimization, distinguishing token length and feedback length measures.">
+  <meta property="og:description"
+    content="A novel DPO formulation that explicitly integrates autoregressive modeling into preference optimization, distinguishing token length and feedback length measures.">
   <meta property="og:url" content="https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE">
   <meta property="og:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
   <meta property="og:image:width" content="1200">
@@ -33,7 +37,8 @@
   <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE">
   <meta name="twitter:creator" content="@YOUR_TWITTER_HANDLE">
   <meta name="twitter:title" content="Autoregressive Direct Preference Optimization">
-  <meta name="twitter:description" content="A novel DPO formulation that explicitly integrates autoregressive modeling into preference optimization, distinguishing token length and feedback length measures.">
+  <meta name="twitter:description"
+    content="A novel DPO formulation that explicitly integrates autoregressive modeling into preference optimization, distinguishing token length and feedback length measures.">
   <meta name="twitter:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
   <meta name="twitter:image:alt" content="Autoregressive Direct Preference Optimization - Research Preview">
 
@@ -47,13 +52,13 @@
   <meta name="citation_publication_date" content="2026-02-10">
   <meta name="citation_conference_title" content="arXiv">
   <meta name="citation_pdf_url" content="https://arxiv.org/pdf/2602.09533.pdf">
-  
+
   <!-- Additional SEO -->
   <meta name="theme-color" content="#2563eb">
   <meta name="msapplication-TileColor" content="#2563eb">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  
+
   <!-- Preconnect for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -67,13 +72,16 @@
   <!-- Critical CSS - Load synchronously -->
   <link rel="stylesheet" href="static/css/bulma.min.css">
   <link rel="stylesheet" href="static/css/index.css">
-  
+
   <!-- Non-critical CSS - Load asynchronously -->
-  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style"
+    onload="this.onload=null;this.rel='stylesheet'">
   <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style"
+    onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style"
+    onload="this.onload=null;this.rel='stylesheet'">
+
   <!-- Fallback for browsers that don't support preload -->
   <noscript>
     <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
@@ -81,10 +89,10 @@
     <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   </noscript>
-  
+
   <!-- Fonts - Optimized loading -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
+
   <!-- Defer non-critical JavaScript -->
   <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
@@ -92,7 +100,7 @@
   <script defer src="static/js/bulma-carousel.min.js"></script>
   <script defer src="static/js/bulma-slider.min.js"></script>
   <script defer src="static/js/index.js"></script>
-  
+
   <!-- Structured Data for Academic Papers -->
   <script type="application/ld+json">
   {
@@ -170,7 +178,7 @@
     ]
   }
   </script>
-  
+
   <!-- Website/Organization Structured Data -->
   <script type="application/ld+json">
   {
@@ -185,6 +193,7 @@
   }
   </script>
 </head>
+
 <body>
 
 
@@ -194,189 +203,218 @@
   </button>
 
   <main id="main-content">
-  <section class="hero">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
-          <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">Autoregressive Direct Preference Optimization</h1>
-            <div class="is-size-5 publication-authors">
-              <span class="author-block">
-                <a href="https://sites.google.com/view/masanarioi/" target="_blank">Masanari Oi</a><sup>1</sup>,</span>
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <h1 class="title is-1 publication-title">Autoregressive Direct Preference Optimization</h1>
+              <div class="is-size-5 publication-authors">
+                <span class="author-block">
+                  <a href="https://sites.google.com/view/masanarioi/" target="_blank">Masanari
+                    Oi</a><sup>1</sup>,</span>
                 <span class="author-block">
                   Mahiro Ukai<sup>1</sup>,</span>
-                  <span class="author-block">
-                    <a href="https://sites.google.com/view/masahirokaneko/english" target="_blank">Masahiro Kaneko</a><sup>2,1</sup>,</span>
-                  <span class="author-block">
-                    <a href="https://www.chokkan.org/index.en.html" target="_blank">Naoaki Okazaki</a><sup>1</sup>,</span>
-                  <span class="author-block">
-                    <a href="https://mmai.tech/" target="_blank">Nakamasa Inoue</a><sup>1</sup>
-                  </span>
-                  </div>
+                <span class="author-block">
+                  <a href="https://sites.google.com/view/masahirokaneko/english" target="_blank">Masahiro
+                    Kaneko</a><sup>2,1</sup>,</span>
+                <span class="author-block">
+                  <a href="https://www.chokkan.org/index.en.html" target="_blank">Naoaki Okazaki</a><sup>1</sup>,</span>
+                <span class="author-block">
+                  <a href="https://mmai.tech/" target="_blank">Nakamasa Inoue</a><sup>1</sup>
+                </span>
+              </div>
 
-                  <div class="is-size-5 publication-authors">
-                    <span class="author-block"><sup>1</sup>Institute of Science Tokyo, <sup>2</sup>MBZUAI<br>arXiv 2026</span>
-                  </div>
+              <div class="is-size-5 publication-authors">
+                <span class="author-block"><sup>1</sup>Institute of Science Tokyo, <sup>2</sup>MBZUAI<br>arXiv
+                  2026</span>
+              </div>
 
-                  <div class="column has-text-centered">
-                    <div class="publication-links">
-                <!-- arXiv Link -->
-                <span class="link-block">
-                  <a href="https://arxiv.org/abs/2602.09533" target="_blank"
-                  class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="ai ai-arxiv"></i>
+              <div class="column has-text-centered">
+                <div class="publication-links">
+                  <!-- arXiv Link -->
+                  <span class="link-block">
+                    <a href="https://arxiv.org/abs/2602.09533" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="ai ai-arxiv"></i>
+                      </span>
+                      <span>arXiv</span>
+                    </a>
                   </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
 
                   <!-- GitHub Code Link - To be added -->
                   <span class="link-block">
-                    <a href="#" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark" style="pointer-events: none; opacity: 0.5;">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code (Coming Soon)</span>
-                  </a>
-                </span>
+                    <a href="https://github.com/stjohn2007/ADPO" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fab fa-github"></i>
+                      </span>
+                      <span>Code</span>
+                    </a>
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
 
-<!-- Paper abstract -->
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            Direct preference optimization (DPO) has emerged as a promising approach for aligning large language models (LLMs) with human preferences. However, the widespread reliance on the response-level Bradley-Terry (BT) model may limit its full potential, as the reference and learnable models are assumed to be autoregressive only after deriving the objective function. Motivated by this limitation, we revisit the theoretical foundations of DPO and propose a novel formulation that explicitly introduces the autoregressive assumption prior to applying the BT model. By reformulating and extending DPO, we derive a novel variant, termed <strong>Autoregressive DPO (ADPO)</strong>, that explicitly integrates autoregressive modeling into the preference optimization framework. Without violating the theoretical foundations, the derived loss takes an elegant form: it shifts the summation operation in the DPO objective outside the log-sigmoid function. Furthermore, through theoretical analysis of ADPO, we show that there exist two length measures to be considered when designing DPO-based algorithms: the token length μ and the feedback length μ'. To the best of our knowledge, we are the first to explicitly distinguish these two measures and analyze their implications for preference optimization in LLMs.
-          </p>
+    <!-- Paper abstract -->
+    <section class="section hero is-light">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Abstract</h2>
+            <div class="content has-text-justified">
+              <p>
+                Direct preference optimization (DPO) has emerged as a promising approach for aligning large language
+                models (LLMs) with human preferences. However, the widespread reliance on the response-level
+                Bradley-Terry (BT) model may limit its full potential, as the reference and learnable models are assumed
+                to be autoregressive only after deriving the objective function. Motivated by this limitation, we
+                revisit the theoretical foundations of DPO and propose a novel formulation that explicitly introduces
+                the autoregressive assumption prior to applying the BT model. By reformulating and extending DPO, we
+                derive a novel variant, termed <strong>Autoregressive DPO (ADPO)</strong>, that explicitly integrates
+                autoregressive modeling into the preference optimization framework. Without violating the theoretical
+                foundations, the derived loss takes an elegant form: it shifts the summation operation in the DPO
+                objective outside the log-sigmoid function. Furthermore, through theoretical analysis of ADPO, we show
+                that there exist two length measures to be consideråed when designing DPO-based algorithms: the token
+                length μ and the feedback length μ'. To the best of our knowledge, we are the first to explicitly
+                distinguish these two measures and analyze their implications for preference optimization in LLMs.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-<!-- End paper abstract -->
+    </section>
+    <!-- End paper abstract -->
 
 
-<!-- Method Overview -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered">Method Overview</h2>
+    <!-- Method Overview -->
+    <section class="hero is-small">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <h2 class="title is-3 has-text-centered">Method Overview</h2>
 
-      <!-- Figure 1: Teaser -->
-      <div class="columns is-centered" style="margin-top: 2rem;">
-        <div class="column is-full">
-          <img src="static/images/teaser.png" alt="ADPO method overview and theoretical framework" loading="lazy" style="width: 100%;"/>
-          <p class="has-text-centered" style="margin-top: 1rem;">
-            <strong>ADPO Framework:</strong> Our method explicitly integrates autoregressive modeling into the preference optimization framework, shifting the summation operation outside the log-sigmoid function for improved theoretical consistency.
-          </p>
-        </div>
-      </div>
+          <!-- Figure 1: Teaser -->
+          <div class="columns is-centered" style="margin-top: 2rem;">
+            <div class="column is-full">
+              <img src="static/images/teaser.png" alt="ADPO method overview and theoretical framework" loading="lazy"
+                style="width: 100%;" />
+              <p class="has-text-centered" style="margin-top: 1rem;">
+                <strong>ADPO Framework:</strong> Our method explicitly integrates autoregressive modeling into the
+                preference optimization framework, shifting the summation operation outside the log-sigmoid function for
+                improved theoretical consistency.
+              </p>
+            </div>
+          </div>
 
-      <!-- Figure 2: Granularity -->
-      <div class="columns is-centered" style="margin-top: 3rem;">
-        <div class="column is-full">
-          <img src="static/images/granularity.png" alt="Token-level vs response-level granularity comparison" loading="lazy" style="width: 100%;"/>
-          <p class="has-text-centered" style="margin-top: 1rem;">
-            <strong>Granularity Families:</strong> We define two granularity families (i.e., how to decompose a response into tokens) in ADPO: Static Family (b-d) and Adaptive Family (e-g). Static Family divides responses using a fixed window size k, while Adaptive Family dynamically determines the window size by decomposing responses into m segments.
-          </p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-<!-- End method overview -->
-
-
-<!-- Main Results -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered">Main Results</h2>
-
-      <!-- Results Figure -->
-      <div class="columns is-centered" style="margin-top: 2rem;">
-        <div class="column is-full">
-          <img src="static/images/results.png" alt="Experimental results showing ADPO performance" loading="lazy" style="width: 100%;"/>
-          <p class="has-text-centered" style="margin-top: 1rem;">
-            <strong>Main Results:</strong> ADPO demonstrates consistent improvements across multiple mathematic reasoning benchmarks, validating our theoretical contributions and showing the practical benefits of autoregressive preference optimization. Granularity analysis reveals that finer granularity can lead to better performance.
-          </p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-<!-- End main results -->
-
-
-
-
-
-
-
-
-
-
-<!--BibTex citation -->
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <div class="bibtex-header">
-        <h2 class="title">BibTeX</h2>
-        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
-          <i class="fas fa-copy"></i>
-          <span class="copy-text">Copy</span>
-        </button>
-      </div>
-      <pre id="bibtex-code"><code>@misc{oi2026autoregressivedirectpreferenceoptimization,
-      title={Autoregressive Direct Preference Optimization},
-      author={Masanari Oi and Mahiro Ukai and Masahiro Kaneko and Naoaki Okazaki and Nakamasa Inoue},
-      year={2026},
-      eprint={2602.09533},
-      archivePrefix={arXiv},
-      primaryClass={cs.AI},
-      url={https://arxiv.org/abs/2602.09533},
-}</code></pre>
-    </div>
-</section>
-<!--End BibTex citation -->
-
-
-  <footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-
-          <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
+          <!-- Figure 2: Granularity -->
+          <div class="columns is-centered" style="margin-top: 3rem;">
+            <div class="column is-full">
+              <img src="static/images/granularity.png" alt="Token-level vs response-level granularity comparison"
+                loading="lazy" style="width: 100%;" />
+              <p class="has-text-centered" style="margin-top: 1rem;">
+                <strong>Granularity Families:</strong> We define two granularity families (i.e., how to decompose a
+                response into tokens) in ADPO: Static Family (b-d) and Adaptive Family (e-g). Static Family divides
+                responses using a fixed window size k, while Adaptive Family dynamically determines the window size by
+                decomposing responses into m segments.
+              </p>
+            </div>
+          </div>
 
         </div>
       </div>
-    </div>
-  </div>
-</footer>
+    </section>
+    <!-- End method overview -->
 
-<!-- Statcounter tracking code -->
-  
-<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- Main Results -->
+    <section class="hero is-small is-light">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <h2 class="title is-3 has-text-centered">Main Results</h2>
+
+          <!-- Results Figure -->
+          <div class="columns is-centered" style="margin-top: 2rem;">
+            <div class="column is-full">
+              <img src="static/images/results.png" alt="Experimental results showing ADPO performance" loading="lazy"
+                style="width: 100%;" />
+              <p class="has-text-centered" style="margin-top: 1rem;">
+                <strong>Main Results:</strong> ADPO demonstrates consistent improvements across multiple mathematic
+                reasoning benchmarks, validating our theoretical contributions and showing the practical benefits of
+                autoregressive preference optimization. Granularity analysis reveals that finer granularity can lead to
+                better performance.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <!-- End main results -->
+
+
+
+
+
+
+
+
+
+
+    <!--BibTex citation -->
+    <section class="section" id="BibTeX">
+      <div class="container is-max-desktop content">
+        <div class="bibtex-header">
+          <h2 class="title">BibTeX</h2>
+          <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+            <i class="fas fa-copy"></i>
+            <span class="copy-text">Copy</span>
+          </button>
+        </div>
+        <pre id="bibtex-code"><code>@inproceedings{
+    oi2026autoregressive,
+    title={Autoregressive Direct Preference Optimization},
+    author={Masanari Oi and Mahiro Ukai and Masahiro Kaneko and Naoaki Okazaki and Nakamasa Inoue},
+    booktitle={Forty-third International Conference on Machine Learning},
+    year={2026},
+},</code></pre>
+      </div>
+    </section>
+    <!--End BibTex citation -->
+
+
+    <footer class="footer">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-8">
+            <div class="content">
+
+              <p>
+                This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template"
+                  target="_blank">Academic Project Page Template</a> which was adopted from the <a
+                  href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+                You are free to borrow the source code of this website, we just ask that you link back to this page in
+                the footer. <br> This website is licensed under a <a rel="license"
+                  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+                  Commons Attribution-ShareAlike 4.0 International License</a>.
+              </p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Statcounter tracking code -->
+
+    <!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
 
     <!-- End of Statcounter Code -->
 
-  </body>
-  </html>
+</body>
+
+</html>
